@@ -1,3 +1,5 @@
+import { ListaResppegadogicoComponent } from './responsavel/lista-resppegadogico/lista-resppegadogico.component';
+import { CadResppegadogicoComponent } from './responsavel/cad-resppegadogico/cad-resppegadogico.component';
 import { InicioComponent } from './inicio/inicio/inicio.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -8,8 +10,6 @@ import { ListaTurmaComponent } from './turmas/lista-turma/lista-turma.component'
 import { CadTurmaComponent } from './turmas/cad-turma/cad-turma.component';
 import { ListaSerieComponent } from './series/lista-serie/lista-serie.component';
 import { CadSerieComponent } from './series/cad-serie/cad-serie.component';
-import { ListaResppedagogicoComponent } from './responsavel/lista-resppedagogico/lista-resppedagogico.component';
-import { CadResppedagogicoComponent } from './responsavel/cad-resppedagogico/cad-resppedagogico.component';
 import { ListaCartaoComponent } from './cartoes/lista-cartao/lista-cartao.component';
 import { CadCartaoComponent } from './cartoes/cad-cartao/cad-cartao.component';
 import { ListaAlunoComponent } from './alunos/lista-aluno/lista-aluno.component';
@@ -27,9 +27,9 @@ const routes: Routes = [
   { path: 'cartoes/:cod', component: CadCartaoComponent },
   { path: 'cartoes', component: ListaCartaoComponent },
 
-  { path: 'responsaveis/novo', component: CadResppedagogicoComponent },
-  { path: 'responsaveis/:cod', component: CadResppedagogicoComponent },
-  { path: 'responsaveis', component: ListaResppedagogicoComponent },
+  { path: 'responsaveis/novo', component: CadResppegadogicoComponent },
+  { path: 'responsaveis/:cod', component: CadResppegadogicoComponent },
+  { path: 'responsaveis', component: ListaResppegadogicoComponent },
 
   { path: 'series/novo', component: CadSerieComponent },
   { path: 'series/:cod', component: CadSerieComponent },

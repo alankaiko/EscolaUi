@@ -1,0 +1,37 @@
+
+
+.button {
+  background-color: #ddd; /* Green */
+  border: none;
+  color: #363b48;;
+  padding: 20px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+
+}
+
+.button1 {
+  background-color: #363b48fa;
+  color: #fff;
+  border: 0px;
+  padding: 90px 100px;
+  font-style: normal;
+  text-align: right;
+  background: url(/assets/imagem/all.png) no-repeat left center;
+}
+
+.button1:hover {
+  background-color:#fff;
+  color: black;
+  font-style: oblique;
+}
+
+figure img {
+  width: 250px;
+  height: 220px;
+}

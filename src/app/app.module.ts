@@ -5,8 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListaTurnoComponent } from './turnos/lista-turno/lista-turno.component';
 import { ListaCartaoComponent } from './cartoes/lista-cartao/lista-cartao.component';
 import { CadCartaoComponent } from './cartoes/cad-cartao/cad-cartao.component';
-import { ListaResppedagogicoComponent } from './responsavel/lista-resppedagogico/lista-resppedagogico.component';
-import { CadResppedagogicoComponent } from './responsavel/cad-resppedagogico/cad-resppedagogico.component';
+
 import { ListaSerieComponent } from './series/lista-serie/lista-serie.component';
 import { CadSerieComponent } from './series/cad-serie/cad-serie.component';
 import { ListaSalaComponent } from './salas/lista-sala/lista-sala.component';
@@ -18,6 +17,8 @@ import { ListaTurmaComponent } from './turmas/lista-turma/lista-turma.component'
 import { CadTurmaComponent } from './turmas/cad-turma/cad-turma.component';
 import { InicioComponent } from './inicio/inicio/inicio.component';
 import { AppComponent } from './app.component';
+import { CadResppegadogicoComponent } from './responsavel/cad-resppegadogico/cad-resppegadogico.component';
+import { ListaResppegadogicoComponent } from './responsavel/lista-resppegadogico/lista-resppegadogico.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +27,8 @@ import { AppComponent } from './app.component';
     ListaAlunoComponent,
     CadCartaoComponent,
     ListaCartaoComponent,
-    CadResppedagogicoComponent,
-    ListaResppedagogicoComponent,
+    CadResppegadogicoComponent,
+    ListaResppegadogicoComponent,
     CadSerieComponent,
     ListaSerieComponent,
     CadTurmaComponent,
@@ -36,7 +37,9 @@ import { AppComponent } from './app.component';
     ListaTurnoComponent,
     CadSalaComponent,
     ListaSalaComponent,
-    InicioComponent
+    InicioComponent,
+    CadResppegadogicoComponent,
+    ListaResppegadogicoComponent
   ],
   imports: [
     BrowserModule,
