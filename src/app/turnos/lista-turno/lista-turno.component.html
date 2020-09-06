@@ -1,1 +1,45 @@
-<p>lista-turno works!</p>
+<div class="geral">
+  <div>
+    <p-table id="dynamic-table" [value]="turnos" [responsive]="true" [paginator]="true" *ngIf="visible"
+      [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros"
+      (onLazyLoad)="aoMudarPagina($event)" class="table table-striped">
+      <ng-template pTemplate="header">
+        <tr>
+          <th class="center" style="width: 20%;">Código</th>
+          <th class="center" style="width: 70%;">Turno</th>
+          <th class="center" style="width: 10%;">Opções</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-turno>
+        <tr>
+          <td class="center">{{turno?.codigo}}</td>
+          <td class="center">{{turno?.turno}}</td>
+          <td class="center">
+            <a class="tooltip-success" data-rel="tooltip" title="Editar" [routerLink]="['/turnos', turno.codigo]">
+              <span class="blue">
+                <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+              </span>
+            </a>
+
+            <a class="tooltip-error" data-rel="tooltip" title="Excluir" (click)="ConfirmarExclusao(turno)">
+              <span class="red">
+                <i class="ace-icon fa fa-trash-o bigger-120"></i>
+              </span>
+            </a>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="5">
+            Nenhum aluno encontrado
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+  <div>
+    <button type="button" class="btn btn-block btn-primary" routerLink="/turnos/novo">Incluir</button>
+  </div>
+</div>

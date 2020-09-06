@@ -33,10 +33,10 @@ export class ResppedagogicoService {
     return this.http.get<any>(`${this.url}?resumo`, { params })
       .toPromise()
       .then(response => {
-        const resp = response;
+        const responsaveis = response;
 
         const resultado = {
-          resp,
+          responsaveis,
           total: response.totalElements
         };
 

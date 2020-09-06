@@ -1,19 +1,17 @@
 <div class="geral">
   <div>
-    <div>
-
+    <div class="menu" style="z-index: 11000;">
+      <app-navbar *ngIf="exibindoNavbar()"></app-navbar>
     </div>
 
-    <div>
-        <div class="ui-g-2 menuesquerda">
+    <div class="conteudo">
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
 
-        </div>
-
-        <div class="conteudo">
-            <div>
-              <router-outlet></router-outlet>
-            </div>
-        </div>
+    <div class="rodape">
+      <app-footer></app-footer>
     </div>
   </div>
 </div>
