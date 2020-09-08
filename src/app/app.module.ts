@@ -20,12 +20,27 @@ import { ListaTurmaComponent } from './turmas/lista-turma/lista-turma.component'
 import { CadTurmaComponent } from './turmas/cad-turma/cad-turma.component';
 import { InicioComponent } from './inicio/inicio/inicio.component';
 import { AppComponent } from './app.component';
+import { DropdownModule } from 'primeng/dropdown';
 import { CadResppegadogicoComponent } from './responsavel/cad-resppegadogico/cad-resppegadogico.component';
 import { ListaResppegadogicoComponent } from './responsavel/lista-resppegadogico/lista-resppegadogico.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    TableModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ConfirmDialogModule,
+    DropdownModule
+  ],
   declarations: [
     AppComponent,
     CadAlunoComponent,
@@ -47,19 +62,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ListaResppegadogicoComponent,
     NavbarComponent,
     FooterComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    TableModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ConfirmDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

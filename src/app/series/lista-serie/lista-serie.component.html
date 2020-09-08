@@ -1,4 +1,5 @@
 <div class="geral">
+  <p-confirmDialog></p-confirmDialog>
   <div>
     <p-table id="dynamic-table" [value]="series" [responsive]="true" [paginator]="true" *ngIf="visible"
       [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros"
@@ -15,17 +16,11 @@
           <td class="center">{{serie?.codigo}}</td>
           <td class="center">{{serie?.serie}}</td>
           <td class="center">
-            <a class="tooltip-success" data-rel="tooltip" title="Editar" [routerLink]="['/series', serie.codigo]">
-              <span class="blue">
-                <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-              </span>
-            </a>
+            <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+              [routerLink]="['/series', serie.codigo]"></a>
 
-            <a class="tooltip-error" data-rel="tooltip" title="Excluir" (click)="ConfirmarExclusao(serie)">
-              <span class="red">
-                <i class="ace-icon fa fa-trash-o bigger-120"></i>
-              </span>
-            </a>
+            <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
+              (click)="ConfirmarExclusao(serie)"></button>
           </td>
         </tr>
       </ng-template>
@@ -40,6 +35,6 @@
   </div>
 
   <div>
-    <button type="button" class="btn btn-block btn-primary" routerLink="/series/novo">Incluir</button>
+    <button type="button" class="btnRegister" routerLink="/series/novo">Incluir</button>
   </div>
 </div>

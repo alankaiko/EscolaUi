@@ -8,35 +8,35 @@
     <div class="col-md-9 register-right">
       <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist"></ul>
 
-      <div class="" >
+      <div>
         <div id="home" role="tabpanel" aria-labelledby="home-tab">
-          <div class="row register-form">
-            <div class="col-md-6">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="ID *" value="" />
+          <form role="form" autocomplete="off" [formGroup]="formulario" (ngSubmit)="Salvar()">
+            <div class="row register-form">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input placeholder="ID" class="form-control" [readonly]= "true" type="text"
+                    pInputText ng-model="text" name="codigo" formControlName="codigo">
+                </div>
               </div>
 
-              <div class="form-group"></div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                    <input placeholder="Turno" class="form-control" type="text" placeholder="Turno *"
+                      pInputText ng-model="text" name="turno" formControlName="turno">
+                  </div>
+                  <div class="form-group">
 
-              <div class="form-group">
-                <div class="maxl"></div>
+                  </div>
+
+                  <div class="botton">
+                  <input type="submit" class="btnRegister"  value="Novo"/>
+                  <input type="submit" class="btnRegister"  value="Editar"/>
+                  <input type="submit" class="btnRegister"  value="Excluir"/>
+                  <input type="submit" class="btnRegister"  value="Gravar"/>
+                  </div>
               </div>
             </div>
-
-            <div class="col-md-6">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Turno *" value="" />
-                </div>
-                <div class="form-group">
-                </div>
-                <div class="botton">
-                <input type="submit" class="btnRegister"  value="Novo"/>
-                <input type="submit" class="btnRegister"  value="Editar"/>
-                <input type="submit" class="btnRegister"  value="Excluir"/>
-                <input type="submit" class="btnRegister"  value="Gravar"/>
-                </div>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>

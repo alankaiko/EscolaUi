@@ -36,4 +36,24 @@ export class Cartao {
 export class Aluno {
   codigo: number;
   nome: string;
+  matricula: string;
+  responsavel = new Responsavel();
+  serie = new Serie();
+  turma = new Turma();
+  resppedagogico = new Resppedagogico();
+  turno = new Turno();
+  sala = new Sala();
+  sexo: EnumSexo;
+
+}
+
+export class Responsavel {
+  codigo: number;
+  nomemae: string;
+  telefone: string;
+}
+
+export enum EnumSexo {
+  Masculino = 'MASCULINO',
+  Feminino = 'FEMININO'
 }

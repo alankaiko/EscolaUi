@@ -1,4 +1,4 @@
-import { Aluno } from './../core/model';
+import { Aluno, Turno, Turma, Sala, Serie, Resppedagogico } from './../core/model';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -13,9 +13,19 @@ export class AlunosFiltro {
 })
 export class AlunoService {
   url: string;
+  urlsala: string;
+  urlserie: string;
+  urlturno: string;
+  urlturma: string;
+  urlresp: string;
 
   constructor(private http: HttpClient) {
     this.url = `${environment.apiUrl}/alunos`;
+    this.urlsala = `${environment.apiUrl}/salas`;
+    this.urlserie = `${environment.apiUrl}/series`;
+    this.urlturno = `${environment.apiUrl}/turnos`;
+    this.urlturma = `${environment.apiUrl}/turmas`;
+    this.urlresp = `${environment.apiUrl}/resppedagogicos`;
   }
 
   Listar(): Promise<any> {
@@ -74,4 +84,23 @@ export class AlunoService {
       .then(() => null);
   }
 
+  ListarTurno(): Promise<Turno[]> {
+    return this.http.get<Turno[]>(this.urlturno).toPromise();
+  }
+
+  ListarTurma(): Promise<Turma[]> {
+    return this.http.get<Turma[]>(this.urlturma).toPromise();
+  }
+
+  ListarSala(): Promise<Sala[]> {
+    return this.http.get<Sala[]>(this.urlsala).toPromise();
+  }
+
+  ListarSerie(): Promise<Serie[]> {
+    return this.http.get<Serie[]>(this.urlserie).toPromise();
+  }
+
+  ListarResp(): Promise<Resppedagogico[]> {
+    return this.http.get<Resppedagogico[]>(this.urlresp).toPromise();
+  }
 }

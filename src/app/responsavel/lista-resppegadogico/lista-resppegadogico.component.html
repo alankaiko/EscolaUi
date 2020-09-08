@@ -1,4 +1,5 @@
 <div class="geral">
+  <p-confirmDialog></p-confirmDialog>
   <div>
     <p-table id="dynamic-table" [value]="responsaveis" [responsive]="true" *ngIf="visible"
       [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros" [paginator]="true"
@@ -13,19 +14,13 @@
       <ng-template pTemplate="body" let-resp>
         <tr>
           <td class="center">{{resp?.codigo}}</td>
-          <td class="center">{{resp?.professor}</td>
+          <td class="center">{{resp?.professor}}</td>
           <td class="center">
-            <a class="tooltip-success" data-rel="tooltip" title="Editar" [routerLink]="['/responsaveis', resp.codigo]">
-              <span class="blue">
-                <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-              </span>
-            </a>
+            <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+              [routerLink]="['/responsaveis', resp.codigo]"></a>
 
-            <a class="tooltip-error" data-rel="tooltip" title="Excluir" (click)="ConfirmarExclusao(resp)">
-              <span class="red">
-                <i class="ace-icon fa fa-trash-o bigger-120"></i>
-              </span>
-            </a>
+            <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
+              (click)="ConfirmarExclusao(resp)"></button>
           </td>
         </tr>
       </ng-template>
@@ -40,6 +35,6 @@
   </div>
 
   <div>
-    <button type="button" class="btn btn-block btn-primary" routerLink="/responsaveis/novo">Incluir</button>
+    <button type="button" class="btnRegister" routerLink="/responsaveis/novo">Incluir</button>
   </div>
 </div>

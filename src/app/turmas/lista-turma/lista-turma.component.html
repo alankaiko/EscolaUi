@@ -1,4 +1,5 @@
 <div class="geral">
+  <p-confirmDialog></p-confirmDialog>
   <div>
     <p-table id="dynamic-table" [value]="turmas" [responsive]="true" [paginator]="true" *ngIf="visible"
       [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros"
@@ -13,19 +14,13 @@
       <ng-template pTemplate="body" let-turma>
         <tr>
           <td class="center">{{turma?.codigo}}</td>
-          <td class="center">{{turma?.turma}}</td>
+          <td class="center">{{turma?.nome}}</td>
           <td class="center">
-            <a class="tooltip-success" data-rel="tooltip" title="Editar" [routerLink]="['/turmas', turma.codigo]">
-              <span class="blue">
-                <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-              </span>
-            </a>
+            <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+              [routerLink]="['/turmas', turma.codigo]"></a>
 
-            <a class="tooltip-error" data-rel="tooltip" title="Excluir" (click)="ConfirmarExclusao(turma)">
-              <span class="red">
-                <i class="ace-icon fa fa-trash-o bigger-120"></i>
-              </span>
-            </a>
+            <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
+              (click)="ConfirmarExclusao(turma)"></button>
           </td>
         </tr>
       </ng-template>
@@ -40,6 +35,6 @@
   </div>
 
   <div>
-    <button type="button" class="btn btn-block btn-primary" routerLink="/turmas/novo">Incluir</button>
+    <button type="button" class="btnRegister" routerLink="/turmas/novo">Incluir</button>
   </div>
 </div>

@@ -1,0 +1,14 @@
+.btnRegister{
+  float: right;
+  margin-top: 10%;
+  border: none;
+  border-radius: 1.5rem;
+  padding: 0.3%;
+  background: #4b4949;
+  color: #fff;
+  font-weight: 600;
+  width: 10%;
+  cursor: pointer;
+  margin-left: 5px;
+  margin-right: 5px;
+}

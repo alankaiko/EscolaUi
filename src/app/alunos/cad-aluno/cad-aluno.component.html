@@ -10,102 +10,79 @@
 
       <div>
         <div>
-          <div class="row register-form">
-            <div class="col-md-6">
-              <div class="form-group">
-                <input style="margin-bottom: 15px" type="text" class="form-control" placeholder="ID*" value="" />
-                <input type="text" class="form-control" placeholder="Nome do Aluno(a) *" value="" />
+          <form role="form" autocomplete="off" [formGroup]="formulario" (ngSubmit)="Salvar()">
+            <div class="row register-form">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input placeholder="ID" class="form-control" [readonly]= "true" type="text"
+                    pInputText ng-model="text" name="codigo" formControlName="codigo">
+                </div>
+
+                <div class="form-group">
+                  <input placeholder="Nome do Aluno(a) *" class="form-control" type="text"
+                    pInputText ng-model="text" name="nome" formControlName="nome">
+                </div>
+
+                <div class="form-group" formGroupName="sala">
+                  <p-dropdown [style]="{'min-width': '100%'}" formControlName="codigo" [options]="salas" placeholder="Selecione" name="codigo"></p-dropdown>
+                </div>
+
+                <div class="form-group" formGroupName="turno">
+                  <p-dropdown [style]="{'min-width': '100%'}" formControlName="codigo" [options]="turnos" placeholder="Selecione" name="codigo"></p-dropdown>
+                </div>
+
+                <div class="form-group" formGroupName="turma">
+                  <p-dropdown [style]="{'min-width': '100%'}" formControlName="codigo" [options]="turmas" placeholder="Selecione" name="codigo"></p-dropdown>
+                </div>
+
+                <div class="form-group">
+                  <div class="maxl">
+                    <label class="radio inline">
+                        <input type="radio" name="gender" value="male" checked>
+                        <span> Masculino </span>
+                    </label>
+
+                    <label class="radio inline">
+                        <input type="radio" name="gender" value="female">
+                        <span>Feminino </span>
+                    </label>
+                  </div>
+                </div>
               </div>
 
-              <div class="form-group">
-                <select class="form-control">
-                  <option class="hidden"  selected disabled>Sala *</option>
-                  <option>SALA 1</option>
-                  <option>SALA 2</option>
-                  <option>SALA 3</option>
-                  <option>SALA 4</option>
-                  <option>SALA 5</option>
-                  <option>SALA 6</option>
-                </select>
-              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input placeholder="Matrícula *" class="form-control" type="text"
+                    pInputText ng-model="text" name="matricula" formControlName="matricula">
+                </div>
 
-              <div class="form-group">
-                <select class="form-control">
-                  <option class="hidden"  selected disabled>Turno *</option>
-                  <option>MATUTINO</option>
-                  <option>VESPERTINO</option>
-                </select>
-              </div>
+                <div class="form-group" formGroupName="responsavel">
+                  <input placeholder="Nome da mãe *" class="form-control" type="text"
+                    pInputText ng-model="text" name="nomemae" formControlName="nomemae">
+                </div>
 
-              <div class="form-group">
-                <select class="form-control">
-                  <option class="hidden"  selected disabled>Turma *</option>
-                  <option>A</option>
-                  <option>B</option>
-                  <option>C</option>
-                  <option>D</option>
-                  <option>F</option>
-                  <option>G</option>
-                </select>
-              </div>
+                <div class="form-group" formGroupName="responsavel">
+                  <input placeholder="Telefone *" class="form-control" type="text"
+                    pInputText ng-model="text" name="telefone" formControlName="telefone">
+                </div>
 
-              <div class="form-group">
-                <div class="maxl">
-                  <label class="radio inline">
-                      <input type="radio" name="gender" value="male" checked>
-                      <span> Masculino </span>
-                  </label>
+                <div class="form-group" formGroupName="serie">
+                  <p-dropdown [style]="{'min-width': '100%'}" formControlName="codigo" [options]="series" placeholder="Selecione" name="codigo"></p-dropdown>
+                </div>
 
-                  <label class="radio inline">
-                      <input type="radio" name="gender" value="female">
-                      <span>Feminino </span>
-                  </label>
+                <div class="form-group" formGroupName="resppedagogico">
+                  <p-dropdown [style]="{'min-width': '100%'}" formControlName="codigo" [options]="responsaveis" placeholder="Selecione" name="codigo"></p-dropdown>
+                </div>
+
+                <div class="botton">
+                  <input type="submit" class="btnRegister"  value="Novo"/>
+                  <input type="submit" class="btnRegister"  value="Editar"/>
+                  <input type="submit" class="btnRegister"  value="Excluir"/>
+                  <input type="submit" class="btnRegister"  value="Gravar"/>
                 </div>
               </div>
             </div>
-
-            <div class="col-md-6">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Matrícula *" value="" />
-              </div>
-
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Nome da Mãe *" value="" />
-              </div>
-
-              <div class="form-group">
-                <input type="text" minlength="11" maxlength="11" name="txtEmpPhone" class="form-control" placeholder="Telefone *" value="" />
-              </div>
-
-              <div class="form-group">
-                <select class="form-control">
-                  <option class="hidden"  selected disabled>Série *</option>
-                  <option>1° Ano</option>
-                  <option>2° Ano</option>
-                  <option>3° Ano</option>
-                  <option>4° Ano</option>
-                  <option>5° Ano</option>
-                  <option>6° Ano</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <select class="form-control">
-                  <option class="hidden"  selected disabled>Responsável Pedagógico *</option>
-                  <option>Tia Maria</option>
-                  <option>Tia Joana</option>
-                  <option>Tia Kamila</option>
-                </select>
-              </div>
-
-              <div class="botton">
-                <input type="submit" class="btnRegister"  value="Novo"/>
-                <input type="submit" class="btnRegister"  value="Editar"/>
-                <input type="submit" class="btnRegister"  value="Excluir"/>
-                <input type="submit" class="btnRegister"  value="Gravar"/>
-              </div>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
