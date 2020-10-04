@@ -1,1 +1,44 @@
-<p>lista-cartao works!</p>
+<div class="geral">
+  <p-confirmDialog></p-confirmDialog>
+  <div>
+    <p-table id="dynamic-table" [value]="cartoes" [responsive]="true" *ngIf="visible"
+      [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros" [paginator]="true"
+      (onLazyLoad)="aoMudarPagina($event)" class="table table-striped">
+      <ng-template pTemplate="header">
+        <tr>
+          <th class="center" style="width: 10%;">Código</th>
+          <th class="center" style="width: 30%;">Título</th>
+          <th class="center" style="width: 30%;">Descricao</th>
+          <th class="center" style="width: 20%;">Cód de barras</th>
+          <th class="center" style="width: 10%;">Opções</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-cartao>
+        <tr>
+          <td class="center">{{cartao?.codigo}}</td>
+          <td class="center">{{cartao?.titulo}}</td>
+          <td class="center">{{cartao?.descricao}}</td>
+          <td class="center">{{cartao?.codigobarras}}</td>
+          <td class="center">
+            <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+              [routerLink]="['/cartoes', cartao.codigo]"></a>
+
+            <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
+              (click)="ConfirmarExclusao(cartao)"></button>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="5">
+            Nenhum professor encontrado
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+  <div>
+    <button type="button" class="btnRegister" routerLink="/cartoes/novo">Incluir</button>
+  </div>
+</div>

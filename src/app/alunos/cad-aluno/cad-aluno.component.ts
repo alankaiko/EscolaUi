@@ -1,9 +1,9 @@
+import { Aluno } from './../../core/model';
 import { AlunoService } from './../../zservice/aluno.service';
 import { Component, OnInit } from '@angular/core';
 import {Location} from '@angular/common';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Aluno } from 'src/app/core/model';
 
 @Component({
   selector: 'app-cad-aluno',

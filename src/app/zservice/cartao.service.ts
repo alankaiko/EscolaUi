@@ -1,4 +1,4 @@
-import { Cartao } from './../core/model';
+import { Cartao, Turma, Aluno } from './../core/model';
 import { environment } from './../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -13,9 +13,13 @@ export class CartaoFiltro {
 })
 export class CartaoService {
   url: string;
+  urlaluno: string;
+  urlturma: string;
 
   constructor(private http: HttpClient) {
     this.url = `${environment.apiUrl}/cartoes`;
+    this.urlaluno = `${environment.apiUrl}/alunos`;
+    this.urlturma = `${environment.apiUrl}/turmas`;
   }
 
   Listar(): Promise<any> {
@@ -79,6 +83,14 @@ export class CartaoService {
     return this.http.delete(`${this.url}/${codigo}`)
       .toPromise()
       .then(() => null);
+  }
+
+  ListarTurma(): Promise<Turma[]> {
+    return this.http.get<Turma[]>(this.urlturma).toPromise();
+  }
+
+  ListarAluno(): Promise<Aluno[]> {
+    return this.http.get<Aluno[]>(this.urlaluno).toPromise();
   }
 
 }

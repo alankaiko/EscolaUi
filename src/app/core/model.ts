@@ -29,9 +29,10 @@ export class Cartao {
   titulo: string;
   descricao: string;
   codigobarras: string;
-  aluno: Aluno;
-  turma: Turma;
+  aluno = new Aluno();
+  turma = new Turma();
 }
+
 
 export class Aluno {
   codigo: number;
@@ -44,7 +45,6 @@ export class Aluno {
   turno = new Turno();
   sala = new Sala();
   sexo: EnumSexo;
-
 }
 
 export class Responsavel {
