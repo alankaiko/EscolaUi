@@ -1,9 +1,9 @@
-<footer class="footer">
+<footer class="footer" *ngIf="NaoExibe()">
   <div class="footer-menu">
     <nav class="container">
       <h2 class="title-footer">Escola Bedinha</h2>
       <ul class="no-liststyle">
-        <li><a href="chamda.html" class="bg-customer-support"><span class="visible-lg">Chamar Alunos</span></a></li>
+        <li><a  routerLink="/chamada" class="bg-customer-support"><span class="visible-lg">Chamar Alunos</span></a></li>
         <li><a href="#" class="bg-my-tickets"><span class="visible-lg">Meus Chamados</span></a></li>
         <li><a href="#" class="bg-help-desk"><span class="visible-lg">Suporte DoorDev</span></a></li>
         <li><a href="#" class="bg-statusblog"><span class="visible-lg">Statusblog</span></a></li>

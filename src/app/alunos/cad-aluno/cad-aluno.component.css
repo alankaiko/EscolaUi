@@ -122,7 +122,18 @@
 }
 
 .html{
-  top: 100px;
+
   max-width: 100px;
   max-height: 100px;
+}
+
+:host /deep/ p-radiobutton .ui-radiobutton .ui-state-active .ui-radiobutton-icon {
+  background-color: #585858;
+}
+
+.botaovolta {
+  margin-top: -100px;
+  width: 150px;
+  position: fixed;
+  right: 20px;
 }

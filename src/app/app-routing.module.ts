@@ -1,3 +1,4 @@
+import { ChamadaComponent } from './chamada/chamada.component';
 import { ListaResppegadogicoComponent } from './responsavel/lista-resppegadogico/lista-resppegadogico.component';
 import { CadResppegadogicoComponent } from './responsavel/cad-resppegadogico/cad-resppegadogico.component';
 import { InicioComponent } from './inicio/inicio/inicio.component';
@@ -45,7 +46,9 @@ const routes: Routes = [
 
   { path: 'salas/novo', component: CadSalaComponent },
   { path: 'salas/:cod', component: CadSalaComponent },
-  { path: 'salas', component: ListaSalaComponent }
+  { path: 'salas', component: ListaSalaComponent },
+
+  { path: 'chamada', component: ChamadaComponent }
 ];
 
 @NgModule({

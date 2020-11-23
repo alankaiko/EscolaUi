@@ -1,17 +1,17 @@
-<div class="nav-content">
+<div class="nav-content" [ngStyle]="Verifica() && {'margin-top': '0'}">
   <menu class="menu">
     <ul class="container">
-      <li><a href="" routerLink="/" class="active ico-home" role="menuitem">Home</a></li>
-      <li><a href="#" role="menuitem">Arquivo</a></li>
+      <li><a routerLink="/" class="active ico-home" role="menuitem">Home</a></li>
+      <li><a routerLink="/" role="menuitem">Arquivo</a></li>
       <li><a href="#" role="menuitem">Cadastros</a>
         <ul>
           <li><a routerLink="/cartoes">Cartões</a></li>
-          <li><a routerLink="/responsaveis">Responsaveis</a></li>
+          <li><a routerLink="/alunos">Alunos</a></li>
+          <li><a routerLink="/responsaveis">Professores</a></li>
           <li><a routerLink="/turnos">Turnos</a></li>
           <li><a routerLink="/turmas">Turmas</a></li>
-          <li><a routerLink="/alunos">Alunos</a></li>
           <li><a routerLink="/salas">Salas</a></li>
-          <li><a routerLink="/series">Série</a></li>
+          <li><a routerLink="/series">Séries</a></li>
         </ul>
       </li>
       <li><a href="#" role="menuitem">Relatórios</a></li>

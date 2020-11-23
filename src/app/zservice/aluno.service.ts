@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Aluno, Turno, Turma, Sala, Serie, Resppedagogico } from './../core/model';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
@@ -102,5 +103,17 @@ export class AlunoService {
 
   ListarResp(): Promise<Resppedagogico[]> {
     return this.http.get<Resppedagogico[]>(this.urlresp).toPromise();
+  }
+
+  PegarImagem(codigo: number): Observable<Blob> {
+    return this.http.get(`${this.url}/imagem/${codigo}`, { responseType: 'blob' });
+  }
+
+  PegarImagems(codigo: number): Observable<string> {
+    return this.http.get(`${this.url}/imagemstring/${codigo}`, { responseType: 'text' });
+  }
+
+  PegarImagemString(codigo: number): Observable<string> {
+    return this.http.get(`${this.url}/imagemstring/${codigo}`, { responseType: 'text' });
   }
 }

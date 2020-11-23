@@ -33,7 +33,6 @@ export class Cartao {
   turma = new Turma();
 }
 
-
 export class Aluno {
   codigo: number;
   nome: string;
@@ -41,10 +40,19 @@ export class Aluno {
   responsavel = new Responsavel();
   serie = new Serie();
   turma = new Turma();
-  resppedagogico = new Resppedagogico();
+  professor = new Resppedagogico();
   turno = new Turno();
   sala = new Sala();
   sexo: EnumSexo;
+  imagem = new Imagem();
+}
+
+export class Imagem {
+  codigo: number;
+  caminho: string;
+  nomeimagem: string;
+  extensao: string;
+  imagem: any;
 }
 
 export class Responsavel {

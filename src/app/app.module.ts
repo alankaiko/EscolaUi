@@ -1,3 +1,4 @@
+import { BannerComponent } from './core/banner/banner.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { NavbarComponent } from './core/navbar/navbar.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,12 +20,16 @@ import { CadTurnoComponent } from './turnos/cad-turno/cad-turno.component';
 import { ListaTurmaComponent } from './turmas/lista-turma/lista-turma.component';
 import { CadTurmaComponent } from './turmas/cad-turma/cad-turma.component';
 import { InicioComponent } from './inicio/inicio/inicio.component';
+import {WebcamModule} from 'ngx-webcam';
 import { AppComponent } from './app.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { CadResppegadogicoComponent } from './responsavel/cad-resppegadogico/cad-resppegadogico.component';
 import { ListaResppegadogicoComponent } from './responsavel/lista-resppegadogico/lista-resppegadogico.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChamadaComponent } from './chamada/chamada.component';
+import {RadioButtonModule} from 'primeng/radiobutton';
+import { ImagemComponent } from './alunos/imagem/imagem.component';
 
 @NgModule({
   imports: [
@@ -39,7 +44,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     ConfirmDialogModule,
-    DropdownModule
+    DropdownModule,
+    RadioButtonModule,
+    WebcamModule
   ],
   declarations: [
     AppComponent,
@@ -61,7 +68,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CadResppegadogicoComponent,
     ListaResppegadogicoComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    ChamadaComponent,
+    BannerComponent,
+    ImagemComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

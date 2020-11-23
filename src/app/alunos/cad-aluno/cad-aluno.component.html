@@ -1,5 +1,20 @@
-<div class="container register">
-  <div class="row">
+<div class="container register geral">
+  <div *ngIf="!conferindo" class="row">
+    <div class="col-md-3 register-left">
+      <img src="assets/imagem/jato.png" alt=""/>
+      <h3>Escolher imagem</h3>
+    </div>
+
+    <div class="col-md-9 register-right">
+        <app-imagem [imagem]="aluno?.imagem"></app-imagem>
+
+        <div class="botaovolta">
+          <input type="button" class="btnRegister" value="Voltar" (click)="AlterarInterface()"/>
+        </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="conferindo">
     <div class="col-md-3 register-left">
       <img src="assets/imagem/jato.png" alt=""/>
       <h3>Cadastro de Alunos</h3>
@@ -10,68 +25,67 @@
 
       <div>
         <div>
-          <form role="form" autocomplete="off" [formGroup]="formulario" (ngSubmit)="Salvar()">
+          <form #f="ngForm" autocomplete="off" (ngSubmit)="Salvar(f)">
             <div class="row register-form">
               <div class="col-md-6">
                 <div class="form-group">
                   <input placeholder="ID" class="form-control" [readonly]= "true" type="text"
-                    pInputText ng-model="text" name="codigo" formControlName="codigo">
+                    pInputText ng-model="text" name="codigo" [(ngModel)]="aluno.codigo" #codigo="ngModel">
                 </div>
 
                 <div class="form-group">
                   <input placeholder="Nome do Aluno(a) *" class="form-control" type="text"
-                    pInputText ng-model="text" name="nome" formControlName="nome">
-                </div>
-
-                <div class="form-group" formGroupName="sala">
-                  <p-dropdown [style]="{'min-width': '100%'}" formControlName="codigo" [options]="salas" placeholder="Selecione" name="codigo"></p-dropdown>
-                </div>
-
-                <div class="form-group" formGroupName="turno">
-                  <p-dropdown [style]="{'min-width': '100%'}" formControlName="codigo" [options]="turnos" placeholder="Selecione" name="codigo"></p-dropdown>
-                </div>
-
-                <div class="form-group" formGroupName="turma">
-                  <p-dropdown [style]="{'min-width': '100%'}" formControlName="codigo" [options]="turmas" placeholder="Selecione" name="codigo"></p-dropdown>
+                    pInputText name="nome" [(ngModel)]="aluno.nome" #nome="ngModel">
                 </div>
 
                 <div class="form-group">
-                  <div class="maxl">
-                    <label class="radio inline">
-                        <input type="radio" name="gender" value="male" checked>
-                        <span> Masculino </span>
-                    </label>
+                  <p-dropdown [style]="{'min-width': '100%'}" [options]="salas" placeholder="Selecione"
+                    name="codigo" [(ngModel)]="aluno.sala.codigo" #codigo="ngModel"></p-dropdown>
+                </div>
 
-                    <label class="radio inline">
-                        <input type="radio" name="gender" value="female">
-                        <span>Feminino </span>
-                    </label>
-                  </div>
+                <div class="form-group">
+                  <p-dropdown [style]="{'min-width': '100%'}" [(ngModel)]="aluno.turno.codigo"
+                    #codigo="ngModel" [options]="turnos" placeholder="Selecione" name="codigo"></p-dropdown>
+                </div>
+
+                <div class="form-group">
+                  <p-dropdown [style]="{'min-width': '100%'}" [options]="turmas" #codigo="ngModel"
+                    placeholder="Selecione" name="codigo" [(ngModel)]="aluno.turma.codigo"></p-dropdown>
+                </div>
+
+                <div class="form-group">
+                  <p-radioButton name="group1" value="MASCULINO" label="Masculino" [(ngModel)]="aluno.sexo" #sexo="ngModel"></p-radioButton>
+                  <p-radioButton name="group1" value="FEMININO" label="Feminino" [(ngModel)]="aluno.sexo" #sexo="ngModel"></p-radioButton>
+                  <a (click)="AlterarInterface()"><span style="cursor: pointer; margin-left: 10px; font-weight: bold; text-decoration: underline;">Tirar Foto</span></a>
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="form-group">
-                  <input placeholder="Matrícula *" class="form-control" type="text"
-                    pInputText ng-model="text" name="matricula" formControlName="matricula">
+                  <input placeholder="Matrícula *" class="form-control" type="text" name="matricula"
+                    pInputText ng-model="text" [(ngModel)]="aluno.matricula" #matricula="ngModel">
                 </div>
 
-                <div class="form-group" formGroupName="responsavel">
-                  <input placeholder="Nome da mãe *" class="form-control" type="text"
-                    pInputText ng-model="text" name="nomemae" formControlName="nomemae">
+                <div class="form-group">
+                  <input placeholder="Nome da mãe *" class="form-control" type="text" name="nomemae"
+                    pInputText ng-model="text" [(ngModel)]="aluno.responsavel.nomemae"
+                    #nomemae="ngModel">
                 </div>
 
-                <div class="form-group" formGroupName="responsavel">
-                  <input placeholder="Telefone *" class="form-control" type="text"
-                    pInputText ng-model="text" name="telefone" formControlName="telefone">
+                <div class="form-group">
+                  <input placeholder="Telefone *" class="form-control" type="text" ng-model="text"
+                    pInputText name="telefone"[(ngModel)]="aluno.responsavel.telefone"
+                    #telefone="ngModel">
                 </div>
 
-                <div class="form-group" formGroupName="serie">
-                  <p-dropdown [style]="{'min-width': '100%'}" formControlName="codigo" [options]="series" placeholder="Selecione" name="codigo"></p-dropdown>
+                <div class="form-group">
+                  <p-dropdown [style]="{'min-width': '100%'}" [(ngModel)]="aluno.serie.codigo"
+                    #codigo="ngModel" [options]="series" placeholder="Selecione" name="codigo"></p-dropdown>
                 </div>
 
-                <div class="form-group" formGroupName="resppedagogico">
-                  <p-dropdown [style]="{'min-width': '100%'}" formControlName="codigo" [options]="responsaveis" placeholder="Selecione" name="codigo"></p-dropdown>
+                <div class="form-group">
+                  <p-dropdown [style]="{'min-width': '100%'}" [(ngModel)]="aluno.professor.codigo"
+                  #codigo="ngModel" [options]="responsaveis" placeholder="Selecione" name="codigo"></p-dropdown>
                 </div>
 
                 <div class="botton">

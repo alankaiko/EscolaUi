@@ -12,6 +12,14 @@ export class AppComponent {
   constructor(private router: Router) {}
 
   exibindoNavbar() {
-    return this.router.url !== '/';
+    return this.router.url === '/';
+  }
+
+  Verifica() {
+    return this.router.url === '/chamada';
+  }
+
+  VerificaMenu() {
+    return this.router.url !== '/chamada';
   }
 }

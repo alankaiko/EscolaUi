@@ -1,8 +1,8 @@
 import { Aluno } from './../../core/model';
 import { AlunoService } from './../../zservice/aluno.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {Location} from '@angular/common';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -11,23 +11,21 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./cad-aluno.component.css']
 })
 export class CadAlunoComponent implements OnInit {
-  formulario: FormGroup;
+  aluno = new Aluno();
   display: true;
   series: any[];
   salas: any[];
   turnos: any[];
   turmas: any[];
   responsaveis: any[];
-
+  conferindo = true;
 
   constructor(private service: AlunoService,
               private rota: ActivatedRoute,
-              private formbuilder: FormBuilder,
               private route: Router,
               private location: Location) {}
 
   ngOnInit() {
-    this.CriarFormulario(new Aluno());
     const cod = this.rota.snapshot.params.cod;
 
     if (cod) {
@@ -40,62 +38,41 @@ export class CadAlunoComponent implements OnInit {
     this.BuscarTurma();
     this.BuscarTurno();
   }
-  get editando() {
-    return Boolean(this.formulario.get('codigo').value);
-  }
 
-  CriarFormulario(aluno: Aluno) {
-    this.formulario = this.formbuilder.group({
-      codigo: [null, aluno.codigo],
-      nome: [null, aluno.nome],
-      sexo: [null, aluno.sexo],
-      matricula: [null, aluno.matricula],
-      responsavel: this.formbuilder.group({
-        nomemae: [null, aluno.responsavel.nomemae],
-        telefone: [null, aluno.responsavel.telefone]
-      }),
-      serie: this.formbuilder.group({
-        codigo: [null, aluno.serie.codigo]
-      }),
-      turma: this.formbuilder.group({
-        codigo: [null, aluno.turma.codigo]
-      }),
-      resppedagogico: this.formbuilder.group({
-        codigo: [null, aluno.resppedagogico.codigo]
-      }),
-      turno: this.formbuilder.group({
-        codigo: [null, aluno.turno.codigo]
-      }),
-      sala: this.formbuilder.group({
-        codigo: [null, aluno.sala.codigo]
-      })
-    });
+  get editando() {
+    return Boolean(this.aluno.codigo);
   }
 
   CarregarAlunos(codigo: number) {
-    this.service.BuscarPorId(codigo).then(aluno => this.formulario.patchValue(aluno));
+    this.service.BuscarPorId(codigo).then(aluno => this.aluno = aluno);
   }
 
-  Salvar() {
+  IdentidadeImagem(): void {
+    this.aluno.imagem.nomeimagem = this.aluno.nome;
+    this.aluno.imagem.extensao = '.jpeg';
+    this.aluno.imagem.imagem = this.aluno.imagem.imagem.imageAsBase64.replace('data:image/jpeg;base64,', '');
+  }
+
+  Salvar(form: FormControl) {
+    this.IdentidadeImagem();
     if (this.editando) {
-      this.AtualizarAlunos();
+      this.AtualizarAlunos(form);
     } else {
-      this.formulario.patchValue(this.AdicionarAlunos());
+      this.AdicionarAlunos(form);
     }
-    this.CriarFormulario(new Aluno());
   }
 
-  AdicionarAlunos() {
-    return this.service.Adicionar(this.formulario.value)
+  AdicionarAlunos(form: FormControl) {
+    return this.service.Adicionar(this.aluno)
       .then(salvo => {
         this.route.navigate(['/alunos']);
       });
   }
 
-  AtualizarAlunos() {
-    this.service.Atualizar(this.formulario.value)
+  AtualizarAlunos(form: FormControl) {
+    this.service.Atualizar(this.aluno)
       .then(aluno => {
-        this.formulario.patchValue(aluno);
+        this.aluno = aluno;
         this.route.navigate(['/alunos']);
       });
   }
@@ -142,5 +119,13 @@ export class CadAlunoComponent implements OnInit {
       this.salas = response
         .map(sala => ({ label: sala.sala, value: sala.codigo }));
     });
+  }
+
+  AlterarInterface() {
+    if (this.conferindo === true) {
+      this.conferindo = false;
+    } else {
+      this.conferindo = true;
+    }
   }
 }

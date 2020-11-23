@@ -1,10 +1,11 @@
 <div class="geral">
   <div>
     <div class="menu" style="z-index: 11000;">
-      <app-navbar *ngIf="exibindoNavbar()"></app-navbar>
+      <app-banner *ngIf="exibindoNavbar()"></app-banner>
+      <app-navbar *ngIf="VerificaMenu()"></app-navbar>
     </div>
 
-    <div class="conteudo">
+    <div class="conteudo" [ngStyle]="Verifica() && {'margin-top': '0'}">
       <div>
         <router-outlet></router-outlet>
       </div>
