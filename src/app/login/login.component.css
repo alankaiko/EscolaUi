@@ -1,4 +1,4 @@
-.geral{
+.geralmente {
   width: 100%;
   height: 100%;
   position: fixed;
@@ -9,18 +9,9 @@
   font-family: "Comfortaa", sans-serif;
 }
 
-.retorno {
-  position: fixed;
-  width: 89.5%;
-  color: rgb(136, 9, 58);
-  margin: 0 auto;
-  bottom: 20px;
-  text-align: right;
-}
-
-.login{
-  width: 1080px;
-  height: 510px;
+.login {
+  width: 300px;
+  height: 420px;
   border: 0 solid beige;
   border-radius: 80px 0px 80px 0px;
   color: transparent;
@@ -30,19 +21,17 @@
   position: absolute;
   transform: translate(-50%, -50%);
   box-sizing: border-box;
-  padding: 70px 30px;
+  padding: 70px 28px;
 }
 
-.imagems {
-  border-radius: 0;
+.usuario {
+  border-radius: 50%;
   position: absolute;
-  top: 0;
-  left: 650px;
-  width: 40%;
-  height: 100%;
+  top: -50px;
+  left: 112px;
 }
 
-h1{
+h1 {
   margin: 0;
   padding-top: 0;
   padding-left: 0;
@@ -55,7 +44,7 @@ h1{
   font-weight: normal;
 }
 
-h7{
+h7 {
   margin: 0;
   padding-top: 0;
   padding-left: 0;
@@ -65,40 +54,47 @@ h7{
   left: 550px;
 }
 
-.login p{
+.login p {
   margin: 0;
-  padding: 5;
+  padding: 0;
   font-weight: normal;
   color: #000;
 }
 
-.login input[type="text"], input[type="password"]{
-  border: 0px;
-  background: transparent;
-  background-color: rgba(128, 120, 120, 0);
-  height: 45px;
-  color: #000;
-  font-size: 35px;
+.login input {
+  width: 100%;
+  margin-bottom: 21px;
 }
 
-.login input[type="submit"]{
+.login input[type="text"], input[type="password"] {
+  border: 0px;
+  border-bottom: 1p;
+  background: transparent;
+  background-color: rgba(128, 120, 120, 0);
+  height: 35px;
+  color: #000;
+  font-size: 12px;
+}
+
+
+.login input[type="submit"] {
   border: 0;
   outline: 0;
   height: 35px;
   font-size: 15px;
   color: #000;
-  background: #fff(228, 223, 223);
+  background: rgb(228, 223, 223);
   border-radius: 20px;
   transition: 0.2s;
 }
 
-.login input[type="submit"]:hover{
+.login input[type="submit"]:hover {
   cursor: pointer;
   background:  rgba(89, 89, 90, 0.219);
   transition: 0.2s;
 }
 
-.login a{
+.login a {
   font-weight: bold;
   text-decoration: transparent;
   font-size: 12px;
@@ -107,3 +103,7 @@ h7{
   transition: 0.2s;
 }
 
+.login a:hover {
+  transition: 0.2s;
+  color: rgb(148, 26, 26);
+}

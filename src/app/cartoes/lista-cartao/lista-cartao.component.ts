@@ -50,7 +50,7 @@ export class ListaCartaoComponent implements OnInit {
       }).catch(erro => erro);
 
     this.visible = false;
-    setTimeout (() => this.visible = true, 0);
+    setTimeout (() => this.visible = true, 100);
   }
 
 

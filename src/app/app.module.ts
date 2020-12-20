@@ -30,6 +30,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChamadaComponent } from './chamada/chamada.component';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import { ImagemComponent } from './alunos/imagem/imagem.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   imports: [
@@ -71,7 +72,8 @@ import { ImagemComponent } from './alunos/imagem/imagem.component';
     FooterComponent,
     ChamadaComponent,
     BannerComponent,
-    ImagemComponent
+    ImagemComponent,
+    LoginComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

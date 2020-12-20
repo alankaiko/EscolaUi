@@ -8,54 +8,49 @@
     <div class="col-md-9 register-right">
       <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist"></ul>
 
-      <div>
-        <div>
-          <form role="form" autocomplete="off" [formGroup]="formulario" (ngSubmit)="Salvar()">
-            <div class="row register-form">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input readonly="true" type="text" class="form-control" name="codigo"
-                    formControlName="codigo" pInputText>
-                </div>
-
-                <div class="form-group">
-                  <input type="text" pInputText class="form-control" name="titulo"
-                    formControlName="titulo" placeholder="Título">
-                </div>
-
-                <div class="form-group">
-                  <input type="text" class="form-control" name="descricao"
-                    formControlName="descricao" pInputText  placeholder="Descrição">
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="form-group" formGroupName="aluno">
-                  <p-dropdown [style]="{'min-width': '100%'}" formControlName="codigo"
-                    [options]="alunos" placeholder="Selecione" name="codigo"></p-dropdown>
-                </div>
-
-                <div class="form-group" formGroupName="turma">
-                  <p-dropdown [style]="{'min-width': '100%'}" formControlName="codigo"
-                    [options]="turmas" placeholder="Selecione" name="codigo"></p-dropdown>
-                </div>
-
-                <div class="form-group">
-                  <input readonly="true" id="codigobarras" type="text" class="form-control"
-                    name="codigobarras" formControlName="codigobarras" pInputText>
-                </div>
-
-                <div class="botton">
-                  <input type="submit" class="btnRegister"  value="Novo"/>
-                  <input type="submit" class="btnRegister"  value="Editar"/>
-                  <input type="submit" class="btnRegister"  value="Excluir"/>
-                  <input type="submit" class="btnRegister"  value="Gravar"/>
-                </div>
-              </div>
+      <form role="form" autocomplete="off" [formGroup]="formulario" (ngSubmit)="Salvar()">
+        <div class="row register-form">
+          <div class="col-md-6">
+            <div class="form-group">
+              <input readonly="true" type="text" class="form-control" name="codigo"
+                formControlName="codigo" pInputText>
             </div>
-          </form>
+
+            <div class="form-group">
+              <input type="text" pInputText class="form-control" name="titulo"
+                formControlName="titulo" placeholder="Título">
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" name="descricao"
+                formControlName="descricao" pInputText  placeholder="Descrição">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group" formGroupName="aluno">
+              <p-dropdown [style]="{'min-width': '100%'}" formControlName="codigo"
+                [options]="alunos" placeholder="Selecione" name="codigo"></p-dropdown>
+            </div>
+
+            <div class="form-group" formGroupName="turma">
+              <p-dropdown [style]="{'min-width': '100%'}" formControlName="codigo"
+                [options]="turmas" placeholder="Selecione" name="codigo"></p-dropdown>
+            </div>
+
+            <div class="form-group">
+              <input readonly="true" id="codigobarras" type="text" class="form-control"
+                name="codigobarras" formControlName="codigobarras" pInputText>
+            </div>
+
+            <div class="botton">
+              <input type="submit" class="btnRegister"  value="Gravar"/>
+              <input type="reset" class="btnRegister"  value="Limpar"/>
+              <input class="btnRegister"  value="Voltar" (click)="Voltar()"/>
+            </div>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>

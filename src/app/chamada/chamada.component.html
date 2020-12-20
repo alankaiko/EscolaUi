@@ -1,14 +1,33 @@
 <div class="geral">
   <div class="login">
-    <img src="/assets/imagem/aluna.jpg" class="usuario" width="100" height="100" alt="">
+    <img [src]="registro?.cartao?.aluno?.imagem?.imagem" class="imagems" width="100"
+      height="100" alt="" *ngIf="registro.cartao.aluno.imagem.imagem != null">
 
-    <form>
-      <input style="margin-bottom: 15px" type="text" placeholder="Nome do Aluno(a)" size="30">
-      <input style="margin-bottom: 15px" type="text" placeholder="Nome Responsavel" size="27">
-      <input style="margin-bottom: 15px" type="text" placeholder="00:00:00" size="27">
-      <input style="margin-bottom: 15px" type="text" placeholder="Série" size="27">
-      <input style="margin-bottom: 15px" type="text" placeholder="Turma" size="27">
-      <input style="margin-bottom: 15px" type="text" placeholder="Turno" size="27">
+    <form #f="ngForm" autocomplete="off" (ngSubmit)="Salvar(f)">
+      <div style="display: none;">
+        <input readonly="true" type="text" name="codigo" [(ngModel)]="registro.cartao.aluno.codigo" #codigo="ngModel" pInputText>
+      </div>
+
+      <input style="margin-bottom: 15px" name="nome"  [(ngModel)]="registro.cartao.aluno.nome" #nome="ngModel"
+        type="text" placeholder="Nome do Aluno(a)" size="30">
+
+      <input style="margin-bottom: 15px" type="text" name="nomemae"
+        [(ngModel)]="registro.cartao.aluno.responsavel.nomemae" #nomemae="ngModel" placeholder="Nome Responsavel" size="27">
+
+      <input style="margin-bottom: 15px" type="text" placeholder="00:00:00" size="27"
+        [(ngModel)]="registro.horaregistro" #horaregistro="ngModel" name="horaregistro">
+
+      <input style="margin-bottom: 15px" name="serie"  [(ngModel)]="registro.cartao.aluno.serie.serie" #serie="ngModel"
+        type="text" placeholder="Série" size="27">
+
+      <input style="margin-bottom: 15px" name="nome" [(ngModel)]="registro.cartao.aluno.turma.nome" #nome="ngModel"
+        type="text" placeholder="Turma" size="27">
+
+      <input style="margin-bottom: 15px" name="turno" [(ngModel)]="registro.cartao.aluno.turno.turno" #turno="ngModel"
+        type="text" placeholder="Turno" size="27">
+
+      <input id="cartaoid" name="codigobarras" [(ngModel)]="registro.cartao.codigobarras" #codigobarras="ngModel"
+        style="margin-bottom: 15px" type="text" placeholder="codigo de barras" (focus)="PesquisarPorCodigoCartao()" size="27">
     </form>
   </div>
 

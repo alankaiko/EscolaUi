@@ -65,3 +65,19 @@ export enum EnumSexo {
   Masculino = 'MASCULINO',
   Feminino = 'FEMININO'
 }
+
+
+export class RegistroMovimentacao {
+  codigo: number;
+  dataregistro: Date;
+  horaregistro: string;
+  descricao: string;
+  dadosadicionais: string;
+  cartao = new Cartao();
+  status: EnumStatus;
+}
+
+export enum EnumStatus {
+  ENTRADA = 'ENTRADA',
+  SAIDA = 'SAIDA'
+}

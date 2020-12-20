@@ -106,7 +106,6 @@ export class ImagemComponent implements OnInit {
   }
 
   ConfigurarVariavel() {
-    console.log('aff');
     this.service.PegarImagemString(this.imagem.codigo).subscribe(data => {
       const web = new WebcamImage(data, data, null);
       this.imagem.imagem = web;

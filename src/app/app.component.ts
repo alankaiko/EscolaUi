@@ -22,4 +22,8 @@ export class AppComponent {
   VerificaMenu() {
     return this.router.url !== '/chamada';
   }
+
+  Teste() {
+    return this.router.url !== '/login';
+  }
 }

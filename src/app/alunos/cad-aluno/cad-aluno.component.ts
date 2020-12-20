@@ -1,6 +1,6 @@
 import { Aluno } from './../../core/model';
 import { AlunoService } from './../../zservice/aluno.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Location} from '@angular/common';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';

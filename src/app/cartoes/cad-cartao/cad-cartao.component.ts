@@ -30,9 +30,12 @@ export class CadCartaoComponent implements OnInit {
     const codcartao = this.rota.snapshot.params.cod;
 
     if (codcartao) {
-      this.CarregarConvenios(codcartao);
+      this.CarregarCartoes(codcartao);
     }
+
     this.Escanear();
+    this.BuscarAlunos();
+    this.BuscarTurma();
   }
 
   Escanear() {
@@ -69,7 +72,7 @@ export class CadCartaoComponent implements OnInit {
   }
 
 
-  CarregarConvenios(codigo: number) {
+  CarregarCartoes(codigo: number) {
     this.service.BuscarPorId(codigo).then(cartao => this.formulario.patchValue(cartao));
   }
 
@@ -102,10 +105,10 @@ export class CadCartaoComponent implements OnInit {
   }
 
   BuscarAlunos() {
-    return this.service.ListarTurma()
+    return this.service.ListarAluno()
     .then(response => {
-      this.turmas = response
-        .map(turma => ({ label: turma.nome, value: turma.codigo }));
+      this.alunos = response
+        .map(aluno => ({ label: aluno.nome, value: aluno.codigo }));
     });
   }
 
