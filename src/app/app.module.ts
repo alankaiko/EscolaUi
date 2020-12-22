@@ -31,6 +31,7 @@ import { ChamadaComponent } from './chamada/chamada.component';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import { ImagemComponent } from './alunos/imagem/imagem.component';
 import { LoginComponent } from './login/login.component';
+import { TelasalaComponent } from './telasala/telasala.component';
 
 @NgModule({
   imports: [
@@ -73,7 +74,8 @@ import { LoginComponent } from './login/login.component';
     ChamadaComponent,
     BannerComponent,
     ImagemComponent,
-    LoginComponent
+    LoginComponent,
+    TelasalaComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

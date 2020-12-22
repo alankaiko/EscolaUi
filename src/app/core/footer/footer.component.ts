@@ -15,7 +15,8 @@ export class FooterComponent implements OnInit {
 
   NaoExibe() {
     return this.router.url !== '/chamada'
-      && this.router.url !== '/login';
+      && this.router.url !== '/login'
+      && this.router.url !== '/telasala';
   }
 
 }

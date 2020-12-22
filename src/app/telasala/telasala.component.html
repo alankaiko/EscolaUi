@@ -1,0 +1,73 @@
+<div class="geraltela">
+  <div class="painel">
+    <div class="esquerdo">
+      <div style="text-align: center;">
+        <span style="font-size: 300%; color: white;">Senha</span>
+      </div>
+
+      <div style="text-align: center;">
+        <span style="font-size: 300%; color: white;">12</span>
+      </div>
+    </div>
+
+    <div class="direito">
+      <div style="text-align: center;">
+        <span style="font-size: 300%; color: #428bca;">Sala</span>
+      </div>
+
+      <div style="text-align: center;">
+        <span style="font-size: 300%; color: #4e4e4e;">3</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="principal">
+    <div class="titulo">
+      <span>Histórico de Chamadas</span>
+    </div>
+
+    <div class="tabela">
+      <p-table id="dynamic-table" [value]="registros" [responsive]="true" [paginator]="true"
+        [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros"
+        (onLazyLoad)="aoMudarPagina($event)" class="table table-striped">
+        <ng-template pTemplate="header">
+          <tr>
+            <th class="center" style="width: 30%;">Aluno</th>
+            <th class="center" style="width: 10%;">Turma</th>
+            <th class="center" style="width: 30%;">Responsável</th>
+            <th class="center" style="width: 10%;">Sala</th>
+            <th class="center" style="width: 10%;">Data</th>
+            <th class="center" style="width: 10%;">Hora</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-registro>
+          <tr>
+            <td class="center">{{registro?.cartao?.aluno?.nome}}</td>
+            <td class="center">{{registro?.cartao?.turma?.nome}}</td>
+            <td class="center">{{registro?.cartao?.aluno?.responsavel?.nomemae}}</td>
+            <td class="center">{{registro?.cartao?.aluno?.sala?.sala}}</td>
+            <td class="center">{{registro?.dataregistro | date:'dd/MM/yyyy'}}</td>
+            <td class="center">{{registro?.horaregistro}}</td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="5">
+              Nenhum Registro encontrado
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+
+  <div class="rodape">
+    <div class="datas">
+      <span style="margin-left: 5px;">{{datahoje |  date:'dd/MM/yyyy'}}</span>
+    </div>
+
+    <div class="informacoes">
+      <span style="margin-left: 10px;">Copyright © 2020-2020 Escola Bedinha.</span>
+    </div>
+  </div>
+</div>

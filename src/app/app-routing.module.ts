@@ -1,3 +1,4 @@
+import { TelasalaComponent } from './telasala/telasala.component';
 import { LoginComponent } from './login/login.component';
 import { ChamadaComponent } from './chamada/chamada.component';
 import { ListaResppegadogicoComponent } from './responsavel/lista-resppegadogico/lista-resppegadogico.component';
@@ -51,7 +52,9 @@ const routes: Routes = [
 
   { path: 'chamada', component: ChamadaComponent },
 
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+
+  { path: 'telasala', component: TelasalaComponent }
 ];
 
 @NgModule({

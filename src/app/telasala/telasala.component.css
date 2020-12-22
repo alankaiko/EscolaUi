@@ -1,0 +1,62 @@
+.geraltela {
+  width: 100%;
+  height: 100%;
+  margin-top: -100px;
+  position: fixed;
+}
+
+.painel {
+  width: 100%;
+  height: 30%;
+  display: inline-flex;
+  border-bottom: 2px solid #428bca;
+}
+
+.principal {
+  width: 100%;
+  height: 65%;
+}
+
+.rodape {
+  width: 100%;
+  height: 5%;
+  display: inline-flex;
+}
+
+.esquerdo {
+  width: 50%;
+  height: 100%;
+  background-color:  #428bca;
+}
+
+.direito {
+  width: 50%;
+  height: 100%;
+}
+
+.titulo {
+  width: 100%;
+  height: 8%;
+  text-align: center;
+  color: #4e4e4e;
+  font-size: 170%;
+}
+
+.tabela {
+  width: 100%;
+  height: 92%;
+}
+
+.datas {
+  background-color: #6d6e6e;
+  color: white;
+  font-size: 150%;
+  width: 15%;
+}
+
+.informacoes {
+  background-color: #428bca;
+  font-size: 150%;
+  color: white;
+  width: 85%;
+}

@@ -8,6 +8,9 @@ import * as moment from 'moment';
 export class RegistroMovimentacaoFiltro {
   pagina = 0;
   itensPorPagina = 7;
+  descricao: string;
+  sala: string;
+  dataregistro: Date;
 }
 
 @Injectable({
@@ -27,12 +30,21 @@ export class RegistromovimentacaoService {
   }
 
   Consultar(filtro: RegistroMovimentacaoFiltro): Promise<any> {
-    const params = new HttpParams({
+    let params = new HttpParams({
       fromObject: {
         page: filtro.pagina.toString(),
         size: filtro.itensPorPagina.toString()
       }
     });
+
+    if (filtro.dataregistro) {
+      params = params.append('dataregistro',
+        moment(filtro.dataregistro).format('YYYY-MM-DD'));
+    }
+
+    if (filtro.sala) {
+      params = params.append('sala', filtro.sala);
+    }
 
     return this.http.get<any>(`${this.url}?resumo`, { params })
       .toPromise()
