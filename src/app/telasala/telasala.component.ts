@@ -17,19 +17,18 @@ export class TelasalaComponent implements OnInit {
   constructor(private service: RegistromovimentacaoService) { }
 
   ngOnInit() {
+    this.datahoje = new Date();
+    this.filtro.dataregistro = this.datahoje;
+
     this.RodandoScript();
   }
 
   RodandoScript() {
     setInterval(() => {
-      this.datahoje = new Date();
-      this.filtro.dataregistro = this.datahoje;
-
       if(this.filtro.sala !== "" && this.filtro.sala !== null && this.filtro.sala !== undefined){
         this.Consultar();
       }
-
-    }, 3000);
+    }, 10000);
   }
 
   Consultar(pagina = 0): Promise<any> {

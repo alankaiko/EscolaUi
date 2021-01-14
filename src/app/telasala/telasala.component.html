@@ -2,11 +2,11 @@
   <div class="painel">
     <div class="esquerdo">
       <div style="text-align: center;">
-        <span style="font-size: 300%; color: white;">Senha</span>
+        <span style="font-size: 300%; color: white;">Escola Bedinha</span>
       </div>
 
-      <div style="text-align: center;">
-        <span style="font-size: 300%; color: white;">12</span>
+      <div style="text-align: center;" *ngIf="registro?.cartao?.aluno?.sala?.sala != null">
+        <span style="font-size: 300%; color: white;">Sala {{registro?.cartao?.aluno?.sala?.sala}} -- Turno {{registro?.cartao?.aluno?.turno?.turno}}</span>
       </div>
     </div>
 
@@ -17,7 +17,7 @@
         </div>
 
         <div style="text-align: center;">
-          <input type="text" name="sala" [(ngModel)]="filtro.sala" #sala="ngModel" pInputText>
+          <input type="text" name="sala" [(ngModel)]="filtro.sala" #sala="ngModel" pInputText (blur)="Consultar(0)">
         </div>
       </form>
     </div>
@@ -54,7 +54,7 @@
         </ng-template>
         <ng-template pTemplate="emptymessage">
           <tr>
-            <td colspan="5">
+            <td colspan="6">
               Nenhum Registro encontrado
             </td>
           </tr>

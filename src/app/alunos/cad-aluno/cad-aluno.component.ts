@@ -54,7 +54,10 @@ export class CadAlunoComponent implements OnInit {
   }
 
   Salvar(form: FormControl) {
-    this.IdentidadeImagem();
+    if (this.aluno.imagem.imagem !== null && this.aluno.imagem.imagem !== undefined){
+      this.IdentidadeImagem();
+    }
+
     if (this.editando) {
       this.AtualizarAlunos(form);
     } else {
