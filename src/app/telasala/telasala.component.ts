@@ -1,4 +1,4 @@
-import { LazyLoadEvent } from 'primeng/api';
+import { FormControl } from '@angular/forms';
 import { RegistroMovimentacaoFiltro, RegistromovimentacaoService } from './../zservice/registromovimentacao.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -17,9 +17,19 @@ export class TelasalaComponent implements OnInit {
   constructor(private service: RegistromovimentacaoService) { }
 
   ngOnInit() {
-    this.datahoje = new Date();
-    this.filtro.dataregistro = this.datahoje;
-    this.filtro.sala = 'sala';
+    this.RodandoScript();
+  }
+
+  RodandoScript() {
+    setInterval(() => {
+      this.datahoje = new Date();
+      this.filtro.dataregistro = this.datahoje;
+
+      if(this.filtro.sala !== "" && this.filtro.sala !== null && this.filtro.sala !== undefined){
+        this.Consultar();
+      }
+
+    }, 3000);
   }
 
   Consultar(pagina = 0): Promise<any> {
@@ -31,9 +41,5 @@ export class TelasalaComponent implements OnInit {
     }).catch(erro => console.log(erro));
   }
 
-  aoMudarPagina(event: LazyLoadEvent) {
-    const pagina = event.first / event.rows;
-    this.Consultar(pagina);
-  }
-
+  Salvar(form: FormControl) {}
 }

@@ -11,13 +11,15 @@
     </div>
 
     <div class="direito">
-      <div style="text-align: center;">
-        <span style="font-size: 300%; color: #428bca;">Sala</span>
-      </div>
+      <form #f="ngForm" autocomplete="off" (ngSubmit)="Salvar(f)">
+        <div style="text-align: center;">
+          <span style="font-size: 300%; color: #428bca;">Sala</span>
+        </div>
 
-      <div style="text-align: center;">
-        <span style="font-size: 300%; color: #4e4e4e;">3</span>
-      </div>
+        <div style="text-align: center;">
+          <input type="text" name="sala" [(ngModel)]="filtro.sala" #sala="ngModel" pInputText>
+        </div>
+      </form>
     </div>
   </div>
 
@@ -28,8 +30,8 @@
 
     <div class="tabela">
       <p-table id="dynamic-table" [value]="registros" [responsive]="true" [paginator]="true"
-        [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros"
-        (onLazyLoad)="aoMudarPagina($event)" class="table table-striped">
+        [rows]="filtro.itensPorPagina" [totalRecords]="totalRegistros" class="table table-striped">
+
         <ng-template pTemplate="header">
           <tr>
             <th class="center" style="width: 30%;">Aluno</th>
