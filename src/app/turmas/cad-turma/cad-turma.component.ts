@@ -4,11 +4,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import {Location} from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-cad-turma',
   templateUrl: './cad-turma.component.html',
-  styleUrls: ['./cad-turma.component.css']
+  styleUrls: ['./cad-turma.component.css'],
+  providers: [ MessageService]
 })
 export class CadTurmaComponent implements OnInit {
   formulario: FormGroup;
@@ -18,7 +20,8 @@ export class CadTurmaComponent implements OnInit {
               private rota: ActivatedRoute,
               private formbuilder: FormBuilder,
               private route: Router,
-              private location: Location) {}
+              private location: Location,
+              private messageservice: MessageService) {}
 
   ngOnInit() {
     this.CriarFormulario(new Turma());
@@ -44,6 +47,11 @@ export class CadTurmaComponent implements OnInit {
   }
 
   Salvar() {
+    if (this.formulario.get('nome').value === '' || this.formulario.get('nome').value === null || this.formulario.get('nome').value === undefined){
+      this.FaltaCampo('Turma', 'Informe a Turma corretamente');
+      return;
+    }
+
     if (this.editando) {
       this.AtualizarTurmas();
     } else {
@@ -65,6 +73,10 @@ export class CadTurmaComponent implements OnInit {
         this.formulario.patchValue(turma);
         this.route.navigate(['/turmas']);
       });
+  }
+
+  FaltaCampo(titulo: string, valor: string) {
+    this.messageservice.add({severity:'error', summary: 'Erro ' + titulo, detail: valor});
   }
 
   Voltar() {

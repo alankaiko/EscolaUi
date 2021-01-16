@@ -4,11 +4,14 @@ import { Component, OnInit } from '@angular/core';
 import {Location} from '@angular/common';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { isEmptyObject } from 'jquery';
 
 @Component({
   selector: 'app-cad-aluno',
   templateUrl: './cad-aluno.component.html',
-  styleUrls: ['./cad-aluno.component.css']
+  styleUrls: ['./cad-aluno.component.css'],
+  providers: [ MessageService]
 })
 export class CadAlunoComponent implements OnInit {
   aluno = new Aluno();
@@ -23,7 +26,8 @@ export class CadAlunoComponent implements OnInit {
   constructor(private service: AlunoService,
               private rota: ActivatedRoute,
               private route: Router,
-              private location: Location) {}
+              private location: Location,
+              private messageservice: MessageService) {}
 
   ngOnInit() {
     const cod = this.rota.snapshot.params.cod;
@@ -54,6 +58,37 @@ export class CadAlunoComponent implements OnInit {
   }
 
   Salvar(form: FormControl) {
+    if (this.aluno.nome === '' || this.aluno.nome === undefined) {
+      this.FaltaCampo('Nome', 'Informe o nome do aluno');
+      return;
+    }
+
+    if (this.aluno.matricula === '' || this.aluno.matricula === undefined) {
+      this.FaltaCampo('Matrícula', 'Informe a Matrícula do aluno');
+      return;
+    }
+
+    if (isEmptyObject(this.aluno.sala)) {
+      this.FaltaCampo('Sala', 'Campo SALA é obrigatório');
+      return;
+    }
+    if (isEmptyObject(this.aluno.turno)) {
+      this.FaltaCampo('Turno', 'Campo TURNO é obrigatório');
+      return;
+    }
+    if (isEmptyObject(this.aluno.turma)) {
+      this.FaltaCampo('Turma', 'Campo TURMA é obrigatório');
+      return;
+    }
+    if (isEmptyObject(this.aluno.serie)) {
+      this.FaltaCampo('Série', 'Campo SÉRIE é obrigatório');
+      return;
+    }
+    if (isEmptyObject(this.aluno.professor)) {
+      this.FaltaCampo('Professor', 'Campo PROFESSOR é obrigatório');
+      return;
+    }
+
     if (this.aluno.imagem.imagem !== null && this.aluno.imagem.imagem !== undefined){
       this.IdentidadeImagem();
     }
@@ -130,5 +165,9 @@ export class CadAlunoComponent implements OnInit {
     } else {
       this.conferindo = true;
     }
+  }
+
+  FaltaCampo(titulo: string, valor: string) {
+    this.messageservice.add({severity:'error', summary: 'Erro ' + titulo, detail: valor});
   }
 }

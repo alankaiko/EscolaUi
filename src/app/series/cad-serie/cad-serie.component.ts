@@ -4,11 +4,13 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Serie } from 'src/app/core/model';
 import {Location} from '@angular/common';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-cad-serie',
   templateUrl: './cad-serie.component.html',
-  styleUrls: ['./cad-serie.component.css']
+  styleUrls: ['./cad-serie.component.css'],
+  providers: [ MessageService]
 })
 export class CadSerieComponent implements OnInit {
   formulario: FormGroup;
@@ -18,7 +20,8 @@ export class CadSerieComponent implements OnInit {
               private rota: ActivatedRoute,
               private formbuilder: FormBuilder,
               private route: Router,
-              private location: Location) {}
+              private location: Location,
+              private messageservice: MessageService) {}
 
   ngOnInit() {
     this.CriarFormulario(new Serie());
@@ -44,6 +47,11 @@ export class CadSerieComponent implements OnInit {
   }
 
   Salvar() {
+    if (this.formulario.get('serie').value === '' || this.formulario.get('serie').value === null || this.formulario.get('serie').value === undefined){
+      this.FaltaCampo('Série', 'Informe a Série corretamente');
+      return;
+    }
+
     if (this.editando) {
       this.AtualizarSeries();
     } else {
@@ -65,6 +73,10 @@ export class CadSerieComponent implements OnInit {
         this.formulario.patchValue(serie);
         this.route.navigate(['/series']);
       });
+  }
+
+  FaltaCampo(titulo: string, valor: string) {
+    this.messageservice.add({severity:'error', summary: 'Erro ' + titulo, detail: valor});
   }
 
   Voltar() {

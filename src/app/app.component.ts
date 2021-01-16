@@ -23,7 +23,7 @@ export class AppComponent {
     return this.router.url !== '/chamada';
   }
 
-  Teste() {
+  ExibeMenu() {
     return this.router.url !== '/login' && this.router.url !== '/telasala';
   }
 }

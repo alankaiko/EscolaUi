@@ -5,12 +5,14 @@ import {Location} from '@angular/common';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import onScan from 'onscan.js/onscan.js';
+import { MessageService } from 'primeng/api';
 
 
 @Component({
   selector: 'app-cad-cartao',
   templateUrl: './cad-cartao.component.html',
-  styleUrls: ['./cad-cartao.component.css']
+  styleUrls: ['./cad-cartao.component.css'],
+  providers: [ MessageService]
 })
 export class CadCartaoComponent implements OnInit {
   display: boolean;
@@ -22,7 +24,8 @@ export class CadCartaoComponent implements OnInit {
               private rota: ActivatedRoute,
               private formbuilder: FormBuilder,
               private route: Router,
-              private location: Location) {
+              private location: Location,
+              private messageservice: MessageService) {
   }
 
   ngOnInit() {
@@ -77,6 +80,25 @@ export class CadCartaoComponent implements OnInit {
   }
 
   Salvar(form: FormControl) {
+    if (this.formulario.get('titulo').value === '' || this.formulario.get('titulo').value === null || this.formulario.get('titulo').value === undefined){
+      this.FaltaCampo('titulo', 'Informe o Título');
+      return;
+    }
+
+    if (this.formulario.get('codigobarras').value === '' || this.formulario.get('codigobarras').value === null || this.formulario.get('codigobarras').value === undefined){
+      this.FaltaCampo('Código de Barras', 'Informe o Código de Barras');
+      return;
+    }
+
+    if (this.formulario.get('aluno').value === '' || this.formulario.get('aluno').value === null || this.formulario.get('aluno').value === undefined){
+      this.FaltaCampo('Aluno', 'Informe o Aluno corretamente');
+      return;
+    }
+
+    if (this.formulario.get('turma').value === '' || this.formulario.get('turma').value === null || this.formulario.get('turma').value === undefined){
+      this.FaltaCampo('Turma', 'Informe a Turma corretamente');
+      return;
+    }
     const valor = document.getElementById('codigobarras') as HTMLInputElement;
     this.formulario.controls['codigobarras'].setValue(valor.value);
 
@@ -118,6 +140,10 @@ export class CadCartaoComponent implements OnInit {
       this.turmas = response
         .map(turma => ({ label: turma.nome, value: turma.codigo }));
     });
+  }
+
+  FaltaCampo(titulo: string, valor: string) {
+    this.messageservice.add({severity:'error', summary: 'Erro ' + titulo, detail: valor});
   }
 
   Voltar() {

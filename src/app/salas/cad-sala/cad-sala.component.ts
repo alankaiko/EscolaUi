@@ -4,11 +4,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {Location} from '@angular/common';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-cad-sala',
   templateUrl: './cad-sala.component.html',
-  styleUrls: ['./cad-sala.component.css']
+  styleUrls: ['./cad-sala.component.css'],
+  providers: [ MessageService]
 })
 export class CadSalaComponent implements OnInit {
   formulario: FormGroup;
@@ -18,7 +20,8 @@ export class CadSalaComponent implements OnInit {
               private rota: ActivatedRoute,
               private formbuilder: FormBuilder,
               private route: Router,
-              private location: Location) {}
+              private location: Location,
+              private messageservice: MessageService) {}
 
   ngOnInit() {
     this.CriarFormulario(new Sala());
@@ -44,6 +47,11 @@ export class CadSalaComponent implements OnInit {
   }
 
   Salvar() {
+    if (this.formulario.get('sala').value === '' || this.formulario.get('sala').value === null || this.formulario.get('sala').value === undefined){
+      this.FaltaCampo('Sala', 'Informe a Sala corretamente');
+      return;
+    }
+
     if (this.editando) {
       this.AtualizarSalas();
     } else {
@@ -65,6 +73,10 @@ export class CadSalaComponent implements OnInit {
         this.formulario.patchValue(sala);
         this.route.navigate(['/salas']);
       });
+  }
+
+  FaltaCampo(titulo: string, valor: string) {
+    this.messageservice.add({severity:'error', summary: 'Erro ' + titulo, detail: valor});
   }
 
   Voltar() {

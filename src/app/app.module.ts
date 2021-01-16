@@ -32,6 +32,7 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import { ImagemComponent } from './alunos/imagem/imagem.component';
 import { LoginComponent } from './login/login.component';
 import { TelasalaComponent } from './telasala/telasala.component';
+import {ToastModule} from 'primeng/toast';
 
 @NgModule({
   imports: [
@@ -48,7 +49,8 @@ import { TelasalaComponent } from './telasala/telasala.component';
     ConfirmDialogModule,
     DropdownModule,
     RadioButtonModule,
-    WebcamModule
+    WebcamModule,
+    ToastModule
   ],
   declarations: [
     AppComponent,

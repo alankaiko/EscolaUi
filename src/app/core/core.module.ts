@@ -1,4 +1,3 @@
-import { MessageComponent } from './message/message.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -9,7 +8,7 @@ import { BannerComponent } from './banner/banner.component';
   imports: [
     CommonModule
   ],
-  declarations: [MessageComponent, NavbarComponent, FooterComponent, BannerComponent],
-  exports: [MessageComponent]
+  declarations: [NavbarComponent, FooterComponent, BannerComponent],
+  exports: []
 })
 export class CoreModule { }

@@ -4,12 +4,14 @@ import {Location} from '@angular/common';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Resppedagogico } from 'src/app/core/model';
+import { MessageService } from 'primeng/api';
 
 
 @Component({
   selector: 'app-cad-resppegadogico',
   templateUrl: './cad-resppegadogico.component.html',
-  styleUrls: ['./cad-resppegadogico.component.css']
+  styleUrls: ['./cad-resppegadogico.component.css'],
+  providers: [ MessageService]
 })
 export class CadResppegadogicoComponent implements OnInit {
   formulario: FormGroup;
@@ -19,7 +21,8 @@ export class CadResppegadogicoComponent implements OnInit {
               private rota: ActivatedRoute,
               private formbuilder: FormBuilder,
               private route: Router,
-              private location: Location) {}
+              private location: Location,
+              private messageservice: MessageService) {}
 
   ngOnInit() {
     this.CriarFormulario(new Resppedagogico());
@@ -45,6 +48,11 @@ export class CadResppegadogicoComponent implements OnInit {
   }
 
   Salvar() {
+    if (this.formulario.get('professor').value === '' || this.formulario.get('professor').value === null || this.formulario.get('professor').value === undefined){
+      this.FaltaCampo('Professor', 'Informe o Professor');
+      return;
+    }
+
     if (this.editando) {
       this.AtualizarResps();
     } else {
@@ -66,6 +74,10 @@ export class CadResppegadogicoComponent implements OnInit {
         this.formulario.patchValue(resp);
         this.route.navigate(['/responsaveis']);
       });
+  }
+
+  FaltaCampo(titulo: string, valor: string) {
+    this.messageservice.add({severity:'error', summary: 'Erro ' + titulo, detail: valor});
   }
 
   Voltar() {

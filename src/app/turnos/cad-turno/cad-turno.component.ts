@@ -4,11 +4,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {Location} from '@angular/common';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-cad-turno',
   templateUrl: './cad-turno.component.html',
-  styleUrls: ['./cad-turno.component.css']
+  styleUrls: ['./cad-turno.component.css'],
+  providers: [ MessageService]
 })
 export class CadTurnoComponent implements OnInit {
   formulario: FormGroup;
@@ -18,7 +20,8 @@ export class CadTurnoComponent implements OnInit {
               private rota: ActivatedRoute,
               private formbuilder: FormBuilder,
               private route: Router,
-              private location: Location) {}
+              private location: Location,
+              private messageservice: MessageService) {}
 
   ngOnInit() {
     this.CriarFormulario(new Turno());
@@ -44,6 +47,11 @@ export class CadTurnoComponent implements OnInit {
   }
 
   Salvar() {
+    if (this.formulario.get('turno').value === '' || this.formulario.get('turno').value === null || this.formulario.get('turno').value === undefined){
+      this.FaltaCampo('Turno', 'Informe o Turno corretamente');
+      return;
+    }
+
     if (this.editando) {
       this.AtualizarTurnos();
     } else {
@@ -65,6 +73,10 @@ export class CadTurnoComponent implements OnInit {
         this.formulario.patchValue(turno);
         this.route.navigate(['/turnos']);
       });
+  }
+
+  FaltaCampo(titulo: string, valor: string) {
+    this.messageservice.add({severity:'error', summary: 'Erro ' + titulo, detail: valor});
   }
 
   Voltar() {

@@ -1,6 +1,6 @@
 <div class="geral">
   <div>
-    <div class="menu" style="z-index: 11000;" *ngIf="Teste()">
+    <div class="menu" style="z-index: 11000;" *ngIf="ExibeMenu()">
       <app-banner *ngIf="exibindoNavbar()"></app-banner>
       <app-navbar *ngIf="VerificaMenu()"></app-navbar>
     </div>
@@ -11,7 +11,7 @@
       </div>
     </div>
 
-    <div class="rodape">
+    <div class="rodape" *ngIf="ExibeMenu()">
       <app-footer></app-footer>
     </div>
   </div>

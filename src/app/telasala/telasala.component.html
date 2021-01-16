@@ -1,19 +1,24 @@
 <div class="geraltela">
   <div class="painel">
     <div class="esquerdo">
-      <div style="text-align: center;">
-        <span style="font-size: 300%; color: white;">Escola Bedinha</span>
+      <div class="classeimg">
+        <img [src]="registro?.cartao?.aluno?.imagem?.imagem" class="imagems" width="100%"
+          height="100%" alt="" *ngIf="registro?.cartao?.aluno?.imagem?.imagem != null">
       </div>
 
-      <div style="text-align: center;" *ngIf="registro?.cartao?.aluno?.sala?.sala != null">
-        <span style="font-size: 300%; color: white;">Sala {{registro?.cartao?.aluno?.sala?.sala}} -- Turno {{registro?.cartao?.aluno?.turno?.turno}}</span>
+      <div class="informacoesreg" *ngIf="registro?.cartao?.aluno?.nome != null">
+        <label style="font-size: 185%;">{{registro?.cartao?.aluno?.nome}}</label>
+        <label>Responsavel: {{registro?.cartao?.aluno?.responsavel?.nomemae}}</label>
+        <label>Turma: {{registro?.cartao?.turma?.nome}}</label>
+        <label>Sala: {{registro?.cartao?.aluno?.sala?.sala}}</label>
+        <label>Data: {{registro.dataregistro | date:'dd/MM/yyyy'}}</label>
       </div>
     </div>
 
     <div class="direito">
       <form #f="ngForm" autocomplete="off" (ngSubmit)="Salvar(f)">
         <div style="text-align: center;">
-          <span style="font-size: 300%; color: #428bca;">Sala</span>
+          <span style="font-size: 300%; color: white;">Sala</span>
         </div>
 
         <div style="text-align: center;">
