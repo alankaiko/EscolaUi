@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 
 export class SerieFiltro {
   pagina = 0;
-  itensPorPagina = 7;
+  itensPorPagina = 9;
 }
 
 @Injectable({

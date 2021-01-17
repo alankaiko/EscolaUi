@@ -6,7 +6,7 @@ import { Turma } from '../core/model';
 
 export class TurmaFiltro {
   pagina = 0;
-  itensPorPagina = 7;
+  itensPorPagina = 9;
 }
 
 @Injectable({

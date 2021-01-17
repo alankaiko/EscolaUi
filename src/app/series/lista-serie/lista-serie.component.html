@@ -15,11 +15,11 @@
         <tr>
           <td class="center">{{serie?.codigo}}</td>
           <td class="center">{{serie?.serie}}</td>
-          <td class="center">
-            <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+          <td class="center" style="text-align: center;">
+            <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" class="iconeopcao"
               [routerLink]="['/series', serie.codigo]"></a>
 
-            <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
+            <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" class="iconeopcao"
               (click)="ConfirmarExclusao(serie)"></button>
           </td>
         </tr>

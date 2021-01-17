@@ -6,7 +6,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 
 export class AlunosFiltro {
   pagina = 0;
-  itensPorPagina = 7;
+  itensPorPagina = 9;
 }
 
 @Injectable({

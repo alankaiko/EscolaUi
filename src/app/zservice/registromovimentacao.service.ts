@@ -7,7 +7,7 @@ import * as moment from 'moment';
 
 export class RegistroMovimentacaoFiltro {
   pagina = 0;
-  itensPorPagina = 7;
+  itensPorPagina = 9;
   descricao: string;
   sala: string;
   dataregistro: Date;

@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 
 export class ResppedagogicoFiltro {
   pagina = 0;
-  itensPorPagina = 7;
+  itensPorPagina = 9;
 }
 
 @Injectable({

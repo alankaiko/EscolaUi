@@ -6,7 +6,7 @@ import { Turno } from '../core/model';
 
 export class TurnoFiltro {
   pagina = 0;
-  itensPorPagina = 7;
+  itensPorPagina = 9;
 }
 
 @Injectable({

@@ -15,11 +15,11 @@
         <tr>
           <td class="center">{{turma?.codigo}}</td>
           <td class="center">{{turma?.nome}}</td>
-          <td class="center">
-            <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+          <td class="center" style="text-align: center;">
+            <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" class="iconeopcao"
               [routerLink]="['/turmas', turma.codigo]"></a>
 
-            <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
+            <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" class="iconeopcao"
               (click)="ConfirmarExclusao(turma)"></button>
           </td>
         </tr>
