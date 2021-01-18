@@ -41,17 +41,17 @@
                 </div>
 
                 <div class="form-group">
-                  <p-dropdown [style]="{'min-width': '100%'}" [options]="salas" placeholder="Sel. Sala"
+                  <p-dropdown [style]="{'min-width': '100%'}" [filter]="true" [options]="salas" placeholder="Sel. Sala"
                     name="codigo" [(ngModel)]="aluno.sala.codigo" #codigo="ngModel"></p-dropdown>
                 </div>
 
                 <div class="form-group">
-                  <p-dropdown [style]="{'min-width': '100%'}" [(ngModel)]="aluno.turno.codigo"
+                  <p-dropdown [style]="{'min-width': '100%'}" [filter]="true" [(ngModel)]="aluno.turno.codigo"
                     #codigo="ngModel" [options]="turnos" placeholder="Sel. Turno" name="codigo"></p-dropdown>
                 </div>
 
                 <div class="form-group">
-                  <p-dropdown [style]="{'min-width': '100%'}" [options]="turmas" #codigo="ngModel"
+                  <p-dropdown [style]="{'min-width': '100%'}" [filter]="true" [options]="turmas" #codigo="ngModel"
                     placeholder="Sel. Turma" name="codigo" [(ngModel)]="aluno.turma.codigo"></p-dropdown>
                 </div>
 
@@ -81,12 +81,12 @@
                 </div>
 
                 <div class="form-group">
-                  <p-dropdown [style]="{'min-width': '100%'}" [(ngModel)]="aluno.serie.codigo"
+                  <p-dropdown [style]="{'min-width': '100%'}" [(ngModel)]="aluno.serie.codigo" [filter]="true"
                     #codigo="ngModel" [options]="series" placeholder="Sel. Série" name="codigo"></p-dropdown>
                 </div>
 
                 <div class="form-group">
-                  <p-dropdown [style]="{'min-width': '100%'}" [(ngModel)]="aluno.professor.codigo"
+                  <p-dropdown [style]="{'min-width': '100%'}" [(ngModel)]="aluno.professor.codigo" [filter]="true"
                   #codigo="ngModel" [options]="responsaveis" placeholder="Sel. Professor" name="codigo"></p-dropdown>
                 </div>
 
