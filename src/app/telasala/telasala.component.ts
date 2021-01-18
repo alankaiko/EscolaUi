@@ -44,7 +44,7 @@ export class TelasalaComponent implements OnInit {
     }).catch(erro => console.log(erro));
   }
 
-  Salvar(form: FormControl) {}
+  Salvar() {}
 
   ConferirUltimoRegistro() {
     if ((this.registro?.codigo === undefined) || (this.registro?.codigo !== this.registros[this.registros.length - 1]?.codigo)) {

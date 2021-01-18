@@ -57,7 +57,7 @@ export class CadAlunoComponent implements OnInit {
     this.aluno.imagem.imagem = this.aluno.imagem.imagem.imageAsBase64.replace('data:image/jpeg;base64,', '');
   }
 
-  Salvar(form: FormControl) {
+  Salvar() {
     if (this.aluno.nome === '' || this.aluno.nome === undefined) {
       this.FaltaCampo('Nome', 'Informe o nome do aluno');
       return;
@@ -94,20 +94,20 @@ export class CadAlunoComponent implements OnInit {
     }
 
     if (this.editando) {
-      this.AtualizarAlunos(form);
+      this.AtualizarAlunos();
     } else {
-      this.AdicionarAlunos(form);
+      this.AdicionarAlunos();
     }
   }
 
-  AdicionarAlunos(form: FormControl) {
+  AdicionarAlunos() {
     return this.service.Adicionar(this.aluno)
       .then(salvo => {
         this.route.navigate(['/alunos']);
       });
   }
 
-  AtualizarAlunos(form: FormControl) {
+  AtualizarAlunos() {
     this.service.Atualizar(this.aluno)
       .then(aluno => {
         this.aluno = aluno;

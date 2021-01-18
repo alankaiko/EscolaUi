@@ -33,6 +33,7 @@ import { ImagemComponent } from './alunos/imagem/imagem.component';
 import { LoginComponent } from './login/login.component';
 import { TelasalaComponent } from './telasala/telasala.component';
 import {ToastModule} from 'primeng/toast';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   imports: [
@@ -79,7 +80,7 @@ import {ToastModule} from 'primeng/toast';
     LoginComponent,
     TelasalaComponent
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

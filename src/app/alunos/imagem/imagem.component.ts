@@ -1,8 +1,8 @@
 import { AlunoService } from './../../zservice/aluno.service';
 import { Imagem } from 'src/app/core/model';
 import { ActivatedRoute } from '@angular/router';
-import { ConfirmationService } from 'primeng/api';
-import { MessageService } from 'primeng/components/common/messageservice';
+import { ConfirmationService, MessageService } from 'primeng/api';
+
 import { Component, OnInit, Input } from '@angular/core';
 import { WebcamInitError, WebcamUtil, WebcamImage } from 'ngx-webcam';
 import { Subject, Observable } from 'rxjs';

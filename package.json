@@ -27,7 +27,7 @@
     "ngx-webcam": "^0.3.0",
     "onscan.js": "^1.5.2",
     "primeicons": "^4.0.0",
-    "primeng": "^8.1.1",
+    "primeng": "^9.0.2",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

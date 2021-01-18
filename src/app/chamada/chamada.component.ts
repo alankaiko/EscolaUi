@@ -60,7 +60,7 @@ export class ChamadaComponent implements OnInit {
     }, 5000);
   }
 
-  Salvar(form: FormControl) {}
+  Salvar() {}
 
   BuscarImagem() {
     this.serviceregistro.PegarImagemString(this.registro.cartao.aluno.imagem.codigo).subscribe(data => {

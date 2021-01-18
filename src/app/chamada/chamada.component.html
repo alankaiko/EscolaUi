@@ -3,7 +3,7 @@
     <img [src]="registro?.cartao?.aluno?.imagem?.imagem" class="imagems" width="100"
       height="100" alt="" *ngIf="registro.cartao.aluno.imagem.imagem != null">
 
-    <form #f="ngForm" autocomplete="off" (ngSubmit)="Salvar(f)">
+    <form #f="ngForm" autocomplete="off" (ngSubmit)="Salvar()">
       <div style="display: none;">
         <input readonly="true" type="text" name="codigo" [(ngModel)]="registro.cartao.aluno.codigo" #codigo="ngModel" pInputText>
       </div>

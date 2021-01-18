@@ -79,7 +79,7 @@ export class CadCartaoComponent implements OnInit {
     this.service.BuscarPorId(codigo).then(cartao => this.formulario.patchValue(cartao));
   }
 
-  Salvar(form: FormControl) {
+  Salvar() {
     if (this.formulario.get('titulo').value === '' || this.formulario.get('titulo').value === null || this.formulario.get('titulo').value === undefined){
       this.FaltaCampo('titulo', 'Informe o Título');
       return;
